@@ -17,7 +17,7 @@ export const GH_BRANCH = 'main';
 export const STAGING_SUBDOMAIN = 'staging-api';
 export const PROD_SUBDOMAIN = 'api';
 // This region controls where your CDK resources are created and also separately controls where the ACM cert gets created.
-export const RESOURCE_DEPLOYMENT_REGION = 'us-east-2'; // or chosen region from step 5
+export const RESOURCE_DEPLOYMENT_REGION = 'eu-west-1'; // or chosen region from step 5
 
 // permissions your fargate task will have
 export const taskExecutionIamPoliciesJSON = [
