@@ -5,7 +5,7 @@ import * as ecr from "aws-cdk-lib/aws-ecr";
 import * as iam from "aws-cdk-lib/aws-iam";
 import { APP_NAME } from "./configuration";
 
-export default function setupEcrAndCodeBuild(stack: cdk.Stack, stagingCluster: ecs.Cluster, prodCluster: ecs.Cluster) {
+export default function setupEcrAndCodeBuild(stack: cdk.Stack) {
     const ecrRepo = new ecr.Repository(stack, 'EcrRepo');
 
     const codebuildProject = new codebuild.Project(stack, `${APP_NAME}`, {
@@ -64,8 +64,7 @@ export default function setupEcrAndCodeBuild(stack: cdk.Stack, stagingCluster: e
             "ecr:GetDownloadUrlForLayer"
         ],
         resources: [
-            `${stagingCluster.clusterArn}`,
-            `${prodCluster.clusterArn}`
+            `*`
         ],
     }));
 

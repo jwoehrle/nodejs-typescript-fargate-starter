@@ -5,7 +5,7 @@ import * as codepipeline_actions from "aws-cdk-lib/aws-codepipeline-actions";
 import { APP_NAME, CODESTAR_CONNECTION_ARN, GH_BRANCH, GH_REPO_NAME, GH_USERNAME } from "./configuration";
 import { FargateService } from "aws-cdk-lib/aws-ecs";
 
-export default function setupPipeline(stack: cdk.Stack, project: codebuild.Project, fargateServiceStaging: FargateService, fargateServiceProd: FargateService) {
+export default function setupPipeline(stack: cdk.Stack, project: codebuild.Project) {
     const sourceOutput = new codepipeline.Artifact();
     const buildOutput = new codepipeline.Artifact();
 
@@ -29,18 +29,6 @@ export default function setupPipeline(stack: cdk.Stack, project: codebuild.Proje
         actionName: 'Approve',
     });
 
-    const deployActionStaging = new codepipeline_actions.EcsDeployAction({
-        actionName: 'DeployActionStaging',
-        service: fargateServiceStaging,
-        imageFile: new codepipeline.ArtifactPath(buildOutput, `imagedefinitions.json`)
-    });
-
-    const deployActionProd = new codepipeline_actions.EcsDeployAction({
-        actionName: 'DeployActionProd',
-        service: fargateServiceProd,
-        imageFile: new codepipeline.ArtifactPath(buildOutput, `imagedefinitions.json`)
-    });
-
     const pipeline = new codepipeline.Pipeline(stack, `${APP_NAME}-Pipeline`, {
         stages: [
             {
@@ -52,16 +40,8 @@ export default function setupPipeline(stack: cdk.Stack, project: codebuild.Proje
                 actions: [buildAction],
             },
             {
-                stageName: 'Deploy-to-ECS-Staging',
-                actions: [deployActionStaging],
-            },
-            {
                 stageName: 'Approval-Workflow',
                 actions: [manualApprovalAction],
-            },
-            {
-                stageName: 'Deploy-to-ECS-Prod',
-                actions: [deployActionProd],
             }
         ]
     });

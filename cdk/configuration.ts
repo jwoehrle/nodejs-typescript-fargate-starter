@@ -4,12 +4,10 @@
 import * as iam from "aws-cdk-lib/aws-iam";
 
 // These settings MUST change
-export const ACCOUNT_ID = '891672395302';
-export const HOSTED_ZONE_ID = 'Z31BB1JUPLX7L0';
-export const HOSTED_ZONE_NAME = 'swolebrain.com';
-export const GH_USERNAME = 'swolebrain';
+export const ACCOUNT_ID = '694488202997';
+export const GH_USERNAME = 'jwoehrle';
 export const GH_REPO_NAME = 'nodejs-typescript-fargate-starter'; // repo name under YOUR account
-export const CODESTAR_CONNECTION_ARN = 'arn:aws:codestar-connections:us-east-1:891672395302:connection/81a7cc54-d115-4c6b-a9d8-b59c4fc38617';
+export const CODESTAR_CONNECTION_ARN = 'arn:aws:codestar-connections:eu-west-1:694488202997:connection/16eaf92e-6cca-4443-9cb8-8cb289b14df1';
 
 /**
  * Settings below here don't have to change, but you might want to
