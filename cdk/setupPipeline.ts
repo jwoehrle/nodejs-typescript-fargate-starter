@@ -15,7 +15,8 @@ export default function setupPipeline(stack: cdk.Stack, project: codebuild.Proje
         connectionArn: CODESTAR_CONNECTION_ARN,
         owner: GH_USERNAME,
         repo: GH_REPO_NAME,
-        branch: GH_BRANCH
+        branch: GH_BRANCH,
+        triggerOnPush: true
     });
 
     const buildAction = new codepipeline_actions.CodeBuildAction({
