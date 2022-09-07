@@ -7,7 +7,7 @@ import * as iam from "aws-cdk-lib/aws-iam";
 export const ACCOUNT_ID = '694488202997';
 export const GH_USERNAME = 'jwoehrle';
 export const GH_REPO_NAME = 'nodejs-typescript-fargate-starter'; // repo name under YOUR account
-export const CODESTAR_CONNECTION_ARN = 'arn:aws:codestar-connections:eu-west-1:694488202997:connection/16eaf92e-6cca-4443-9cb8-8cb289b14df1';
+export const CODESTAR_CONNECTION_ARN = 'arn:aws:codestar-connections:eu-west-1:694488202997:connection/10338062-f8e0-49ab-926e-9320469772f8';
 
 /**
  * Settings below here don't have to change, but you might want to
